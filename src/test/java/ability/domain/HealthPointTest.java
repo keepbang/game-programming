@@ -12,7 +12,7 @@ public class HealthPointTest {
 
     @ParameterizedTest
     @CsvSource(value = {
-            "0,100","50,50","101,0"
+            "0,100", "50,50", "101,0"
     })
     @DisplayName("hp down 테스트")
     public void downHpTest(int damage, int remain) {
@@ -26,7 +26,7 @@ public class HealthPointTest {
 
     @ParameterizedTest
     @CsvSource(value = {
-            "50,100","51,100"
+            "50,100", "51,100"
     })
     @DisplayName("hp up 테스트")
     public void upHPTest(int healPoint, int remain) {
