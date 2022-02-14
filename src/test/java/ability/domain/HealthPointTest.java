@@ -29,7 +29,7 @@ public class HealthPointTest {
             "50,100", "51,100"
     })
     @DisplayName("hp up 테스트")
-    public void upHPTest(int healPoint, int remain) {
+    public void healHPTest(int healPoint, int remain) {
         // given
         HealthPoint healthPoint = new HealthPoint(DEFAULT_HP);
         healthPoint.downHp(50);
