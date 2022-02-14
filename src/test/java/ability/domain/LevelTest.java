@@ -11,7 +11,7 @@ public class LevelTest {
     @DisplayName("레벨 업")
     public void levelUpTest() {
         // given
-        Level level = new Level();
+        Level level = new Level(1);
         // when
         level.levelUp();
         // then

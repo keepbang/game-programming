@@ -22,7 +22,7 @@ public class Ability {
     }
 
     public static Ability init(int level, int healthPoint, int manaPoint, int attack, double attackSpeed, int defense, double avoidRate) {
-        return new Ability(new Level(),
+        return new Ability(new Level(level),
                 new HealthPoint(healthPoint),
                 new ManaPoint(manaPoint),
                 attack,

@@ -32,7 +32,22 @@ public class ManaPointTest {
         // given
         ManaPoint manaPoint = new ManaPoint(currentMana);
         // when
-        return manaPoint.isMana(usedMana);
+        return manaPoint.useMana(usedMana);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {
+            "51, 100", "49, 99", "50, 100"
+    })
+    @DisplayName("마나 회복 테스트")
+    public void healManaTest(int healMana, int remain) {
+        // given
+        ManaPoint manaPoint = new ManaPoint(100);
+        manaPoint.useMana(50);
+        // when
+        manaPoint.healMana(healMana);
+        // then
+        assertThat(manaPoint.getCurrentMp()).isEqualTo(remain);
     }
 
 }

@@ -5,10 +5,6 @@ import java.util.Objects;
 public class Level {
     private int level;
 
-    public Level() {
-        this.level = 1;
-    }
-
     public Level(int level) {
         this.level = level;
     }
