@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CharacterTypeTest {
 
-    private static final Ability ABILITY = Ability.init(1, 100, 100, 10, 0.7, 10, 0.5);
+    private static final Ability ABILITY = Ability.init(1, 100, 100, 10, 0.7, 10, 50);
 
     @ParameterizedTest
     @ValueSource(strings = {

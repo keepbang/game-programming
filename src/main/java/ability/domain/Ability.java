@@ -9,9 +9,9 @@ public class Ability {
     private int attack;
     private double attackSpeed;
     private int defense;
-    private double avoidRate;
+    private AvoidRate avoidRate;
 
-    private Ability(Level level, HealthPoint healthPoint, ManaPoint manaPoint, int attack, double attackSpeed, int defense, double avoidRate) {
+    private Ability(Level level, HealthPoint healthPoint, ManaPoint manaPoint, int attack, double attackSpeed, int defense, AvoidRate avoidRate) {
         this.level = level;
         this.healthPoint = healthPoint;
         this.manaPoint = manaPoint;
@@ -21,14 +21,14 @@ public class Ability {
         this.avoidRate = avoidRate;
     }
 
-    public static Ability init(int level, int healthPoint, int manaPoint, int attack, double attackSpeed, int defense, double avoidRate) {
+    public static Ability init(int level, int healthPoint, int manaPoint, int attack, double attackSpeed, int defense, int avoidRate) {
         return new Ability(new Level(level),
                 new HealthPoint(healthPoint),
                 new ManaPoint(manaPoint),
                 attack,
                 attackSpeed,
                 defense,
-                avoidRate);
+                new AvoidRate(avoidRate));
     }
 
     @Override
@@ -42,7 +42,7 @@ public class Ability {
                 && attack == ability.attack
                 && Double.compare(ability.attackSpeed, attackSpeed) == 0
                 && defense == ability.defense
-                && Double.compare(ability.avoidRate, avoidRate) == 0;
+                && avoidRate == ability.avoidRate;
     }
 
     @Override
