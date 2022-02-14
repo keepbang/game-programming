@@ -20,7 +20,7 @@ public class HealthPoint {
         }
     }
 
-    public void upHp(int healPoint) {
+    public void healHp(int healPoint) {
         healthPoint = remainHealthPoint(healthPoint + healPoint);
     }
 

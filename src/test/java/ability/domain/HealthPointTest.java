@@ -34,7 +34,7 @@ public class HealthPointTest {
         HealthPoint healthPoint = new HealthPoint(DEFAULT_HP);
         healthPoint.downHp(50);
         // when
-        healthPoint.upHp(healPoint);
+        healthPoint.healHp(healPoint);
         // then
         assertThat(healthPoint.getCurrentHp()).isEqualTo(remain);
     }
