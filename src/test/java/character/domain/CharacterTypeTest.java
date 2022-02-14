@@ -6,12 +6,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CharacterTypeTest {
 
-    private static final Ability ABILITY = Ability.init(100, 100, 10, 0.7, 10, 0.5);
+    private static final Ability ABILITY = Ability.init(1, 100, 100, 10, 0.7, 10, 0.5);
 
     @ParameterizedTest
     @ValueSource(strings = {

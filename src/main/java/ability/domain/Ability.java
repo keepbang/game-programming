@@ -5,13 +5,13 @@ import java.util.Objects;
 public class Ability {
     private Level level;
     private HealthPoint healthPoint;
-    private int manaPoint;
+    private ManaPoint manaPoint;
     private int attack;
     private double attackSpeed;
     private int defense;
     private double avoidRate;
 
-    private Ability(Level level, HealthPoint healthPoint, int manaPoint, int attack, double attackSpeed, int defense, double avoidRate) {
+    private Ability(Level level, HealthPoint healthPoint, ManaPoint manaPoint, int attack, double attackSpeed, int defense, double avoidRate) {
         this.level = level;
         this.healthPoint = healthPoint;
         this.manaPoint = manaPoint;
@@ -21,10 +21,10 @@ public class Ability {
         this.avoidRate = avoidRate;
     }
 
-    public static Ability init(int healthPoint, int manaPoint, int attack, double attackSpeed, int defense, double avoidRate) {
+    public static Ability init(int level, int healthPoint, int manaPoint, int attack, double attackSpeed, int defense, double avoidRate) {
         return new Ability(new Level(),
                 new HealthPoint(healthPoint),
-                manaPoint,
+                new ManaPoint(manaPoint),
                 attack,
                 attackSpeed,
                 defense,
