@@ -7,11 +7,11 @@ public class Ability {
     private HealthPoint healthPoint;
     private ManaPoint manaPoint;
     private int attack;
-    private double attackSpeed;
+    private AttackSpeed attackSpeed;
     private int defense;
     private AvoidRate avoidRate;
 
-    private Ability(Level level, HealthPoint healthPoint, ManaPoint manaPoint, int attack, double attackSpeed, int defense, AvoidRate avoidRate) {
+    private Ability(Level level, HealthPoint healthPoint, ManaPoint manaPoint, int attack, AttackSpeed attackSpeed, int defense, AvoidRate avoidRate) {
         this.level = level;
         this.healthPoint = healthPoint;
         this.manaPoint = manaPoint;
@@ -26,7 +26,7 @@ public class Ability {
                 new HealthPoint(healthPoint),
                 new ManaPoint(manaPoint),
                 attack,
-                attackSpeed,
+                new AttackSpeed(attackSpeed),
                 defense,
                 new AvoidRate(avoidRate));
     }
@@ -36,13 +36,13 @@ public class Ability {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ability ability = (Ability) o;
-        return level == ability.level
-                && healthPoint == ability.healthPoint
-                && manaPoint == ability.manaPoint
-                && attack == ability.attack
-                && Double.compare(ability.attackSpeed, attackSpeed) == 0
+        return attack == ability.attack
                 && defense == ability.defense
-                && avoidRate == ability.avoidRate;
+                && Objects.equals(level, ability.level)
+                && Objects.equals(healthPoint, ability.healthPoint)
+                && Objects.equals(manaPoint, ability.manaPoint)
+                && Objects.equals(attackSpeed, ability.attackSpeed)
+                && Objects.equals(avoidRate, ability.avoidRate);
     }
 
     @Override
