@@ -6,12 +6,12 @@ public class Ability {
     private Level level;
     private HealthPoint healthPoint;
     private ManaPoint manaPoint;
-    private int attack;
+    private Attack attack;
     private AttackSpeed attackSpeed;
-    private int defense;
+    private Defense defense;
     private AvoidRate avoidRate;
 
-    private Ability(Level level, HealthPoint healthPoint, ManaPoint manaPoint, int attack, AttackSpeed attackSpeed, int defense, AvoidRate avoidRate) {
+    private Ability(Level level, HealthPoint healthPoint, ManaPoint manaPoint, Attack attack, AttackSpeed attackSpeed, Defense defense, AvoidRate avoidRate) {
         this.level = level;
         this.healthPoint = healthPoint;
         this.manaPoint = manaPoint;
@@ -25,10 +25,38 @@ public class Ability {
         return new Ability(new Level(level),
                 new HealthPoint(healthPoint),
                 new ManaPoint(manaPoint),
-                attack,
+                new Attack(attack),
                 new AttackSpeed(attackSpeed),
-                defense,
+                new Defense(defense),
                 new AvoidRate(avoidRate));
+    }
+
+    public boolean useMana(final ManaPoint usedMana) {
+        return manaPoint.useMana(usedMana);
+    }
+
+    public void upHp(int healPoint) {
+        healthPoint.healHp(healPoint);
+    }
+
+    public void attackBuff(int percent) {
+        attack.changeBuff(percent);
+    }
+
+    public void attackSpeedBuff(int percent) {
+        attackSpeed.changeBuff(percent);
+    }
+
+    public void defenseBuff(int percent) {
+        defense.changeBuff(percent);
+    }
+
+    public void avoidBuff(int percent) {
+        avoidRate.changeBuff(percent);
+    }
+
+    public boolean isUltimateLevel() {
+        return level.isUltimate();
     }
 
     @Override

@@ -2,7 +2,7 @@ package ability.domain;
 
 import common.util.Rate;
 
-public class AvoidRate {
+public class AvoidRate extends CommonAbility {
     private int avoidRate;
 
     public AvoidRate(int avoidRate) {

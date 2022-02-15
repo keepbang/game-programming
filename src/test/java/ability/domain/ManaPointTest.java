@@ -32,7 +32,7 @@ public class ManaPointTest {
         // given
         ManaPoint manaPoint = new ManaPoint(currentMana);
         // when
-        return manaPoint.useMana(usedMana);
+        return manaPoint.useMana(new ManaPoint(usedMana));
     }
 
     @ParameterizedTest
@@ -43,7 +43,7 @@ public class ManaPointTest {
     public void healManaTest(int healMana, int remain) {
         // given
         ManaPoint manaPoint = new ManaPoint(100);
-        manaPoint.useMana(50);
+        manaPoint.useMana(new ManaPoint(50));
         // when
         manaPoint.healMana(healMana);
         // then

@@ -2,7 +2,7 @@ package ability.domain;
 
 import java.time.LocalDateTime;
 
-public class AttackSpeed {
+public class AttackSpeed extends CommonAbility {
     private double delaySecond;
     private LocalDateTime lastAttackTime;
 
@@ -14,7 +14,7 @@ public class AttackSpeed {
     public boolean attacked() {
         if (isAttack()) {
             lastAttackTime = LocalDateTime.now()
-                    .plusNanos((long) (delaySecond * 1_000));
+                    .plusNanos((long) (currentDelaySecond() * 1_000));
             return true;
         }
         return false;
@@ -23,5 +23,12 @@ public class AttackSpeed {
     private boolean isAttack() {
         LocalDateTime current = LocalDateTime.now();
         return lastAttackTime.isBefore(current) || lastAttackTime.isEqual(current);
+    }
+
+    public double currentDelaySecond() {
+        if (buff < 0) {
+            return delaySecond + delaySecond * Math.abs(buff);
+        }
+        return delaySecond / (buff * 0.01);
     }
 }

@@ -11,7 +11,7 @@ public enum CharacterType {
     ELF(Elf::new),
     ORC(Orc::new);
 
-    private Function<Ability, Character> function;
+    private final Function<Ability, Character> function;
 
     CharacterType(Function<Ability, Character> function) {
         this.function = function;

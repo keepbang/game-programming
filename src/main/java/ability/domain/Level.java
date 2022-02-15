@@ -3,6 +3,8 @@ package ability.domain;
 import java.util.Objects;
 
 public class Level {
+    private static final int ULTIMATE_LEVEL = 99;
+
     private int level;
 
     public Level(int level) {
@@ -11,6 +13,10 @@ public class Level {
 
     public void levelUp() {
         this.level++;
+    }
+
+    public boolean isUltimate() {
+        return level >= ULTIMATE_LEVEL;
     }
 
     @Override

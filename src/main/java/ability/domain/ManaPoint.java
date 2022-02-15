@@ -17,9 +17,9 @@ public class ManaPoint {
         return Math.min(remain, maxManaPoint);
     }
 
-    public boolean useMana(int usedMana) {
-        if (isMana(usedMana)) {
-            manaPoint -= usedMana;
+    public boolean useMana(final ManaPoint usedMana) {
+        if (isMana(usedMana.manaPoint)) {
+            manaPoint -= usedMana.manaPoint;
             return true;
         }
         return false;
