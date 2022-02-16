@@ -7,8 +7,8 @@ public final class Anger implements Active {
     private static final int DEFENSE_DOWN = -10;
 
     @Override
-    public void action(Ability ability) {
-        ability.attackBuff(ATTACK_UP);
-        ability.defenseBuff(DEFENSE_DOWN);
+    public void action(Ability ability, long durationSecond) {
+        ability.attackBuff(ATTACK_UP, durationSecond);
+        ability.defenseBuff(DEFENSE_DOWN, durationSecond);
     }
 }

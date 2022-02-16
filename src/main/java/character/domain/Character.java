@@ -1,6 +1,7 @@
 package character.domain;
 
 import ability.domain.Ability;
+import ability.domain.StatusType;
 import common.exception.NotFoundSkillException;
 import skill.domain.Skill;
 import skill.domain.SkillRace;

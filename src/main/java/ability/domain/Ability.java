@@ -1,5 +1,6 @@
 package ability.domain;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Ability {
@@ -10,6 +11,7 @@ public class Ability {
     private AttackSpeed attackSpeed;
     private Defense defense;
     private AvoidRate avoidRate;
+    private Status status;
 
     private Ability(Level level, HealthPoint healthPoint, ManaPoint manaPoint, Attack attack, AttackSpeed attackSpeed, Defense defense, AvoidRate avoidRate) {
         this.level = level;
@@ -19,6 +21,7 @@ public class Ability {
         this.attackSpeed = attackSpeed;
         this.defense = defense;
         this.avoidRate = avoidRate;
+        this.status = new Status(StatusType.ALIVE, LocalDateTime.MAX);
     }
 
     public static Ability init(int level, int healthPoint, int manaPoint, int attack, double attackSpeed, int defense, int avoidRate) {
@@ -39,24 +42,55 @@ public class Ability {
         healthPoint.healHp(healPoint);
     }
 
-    public void attackBuff(int percent) {
-        attack.changeBuff(percent);
+    public void downHp(int damage) {
+        healthPoint.downHp(damage);
+        if (healthPoint.isDie()) {
+            changeStatus(StatusType.DIE, LocalDateTime.MIN);
+        }
     }
 
-    public void attackSpeedBuff(int percent) {
-        attackSpeed.changeBuff(percent);
+    public void changeStatus(StatusType type, LocalDateTime unlockStatusTime) {
+        status.change(type, unlockStatusTime);
     }
 
-    public void defenseBuff(int percent) {
-        defense.changeBuff(percent);
+    public void attackBuff(int percent, long durationSecond) {
+        attack.changeBuff(percent, durationSecond);
     }
 
-    public void avoidBuff(int percent) {
-        avoidRate.changeBuff(percent);
+    public void attackSpeedBuff(int percent, long durationSecond) {
+        attackSpeed.changeBuff(percent, durationSecond);
+    }
+
+    public void defenseBuff(int percent, long durationSecond) {
+        defense.changeBuff(percent, durationSecond);
+    }
+
+    public void avoidBuff(int percent, long durationSecond) {
+        avoidRate.changeBuff(percent, durationSecond);
     }
 
     public boolean isUltimateLevel() {
         return level.isUltimate();
+    }
+
+    public StatusType currentStatus() {
+        return status.currentStatus();
+    }
+
+    public int currentAttack() {
+        return attack.currentAttack();
+    }
+
+    public int currentDefense() {
+        return defense.currentDefense();
+    }
+
+    public int currentAvoidRate() {
+        return avoidRate.currentAvoidRate();
+    }
+
+    public double currentAttackSpeed() {
+        return attackSpeed.currentDelaySecond();
     }
 
     @Override
@@ -64,17 +98,18 @@ public class Ability {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ability ability = (Ability) o;
-        return attack == ability.attack
-                && defense == ability.defense
-                && Objects.equals(level, ability.level)
+        return Objects.equals(level, ability.level)
                 && Objects.equals(healthPoint, ability.healthPoint)
                 && Objects.equals(manaPoint, ability.manaPoint)
+                && Objects.equals(attack, ability.attack)
                 && Objects.equals(attackSpeed, ability.attackSpeed)
-                && Objects.equals(avoidRate, ability.avoidRate);
+                && Objects.equals(defense, ability.defense)
+                && Objects.equals(avoidRate, ability.avoidRate)
+                && Objects.equals(status, ability.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(level, healthPoint, manaPoint, attack, attackSpeed, defense, avoidRate);
+        return Objects.hash(level, healthPoint, manaPoint, attack, attackSpeed, defense, avoidRate, status);
     }
 }

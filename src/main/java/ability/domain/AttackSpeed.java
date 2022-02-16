@@ -27,8 +27,8 @@ public class AttackSpeed extends CommonAbility {
 
     public double currentDelaySecond() {
         if (buff < 0) {
-            return delaySecond + delaySecond * Math.abs(buff);
+            return delaySecond + delaySecond * (Math.abs(buff) / 100.0);
         }
-        return delaySecond / (buff * 0.01);
+        return Math.round((delaySecond / (buff * 0.01)) * 100) / 100.0;
     }
 }

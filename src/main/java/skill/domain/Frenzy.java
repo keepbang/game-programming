@@ -6,7 +6,7 @@ public class Frenzy implements Active {
     private static final int ATTACK_UP = 500;
 
     @Override
-    public void action(Ability ability) {
-        ability.attackBuff(ATTACK_UP);
+    public void action(Ability ability, long durationSecond) {
+        ability.attackBuff(ATTACK_UP, durationSecond);
     }
 }

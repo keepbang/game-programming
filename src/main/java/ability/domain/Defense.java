@@ -6,4 +6,8 @@ public class Defense extends CommonAbility {
     public Defense(int defense) {
         this.defense = defense;
     }
+
+    public int currentDefense() {
+        return defense + defense * buff / 100;
+    }
 }

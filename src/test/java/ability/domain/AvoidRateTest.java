@@ -1,6 +1,7 @@
 package ability.domain;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -22,5 +23,16 @@ public class AvoidRateTest {
         boolean actual = avoidRate.isAvoid(() -> rate);
         // then
         assertThat(actual).isEqualTo(avoid);
+    }
+
+    @Test
+    @DisplayName("회피율 버프 후 검증")
+    public void avoidRateUp() {
+        // given
+        AvoidRate avoidRate = new AvoidRate(DEFAULT_AVOID_RATE);
+        // when
+        avoidRate.changeBuff(10, 10);
+        // then
+        assertThat(avoidRate.currentAvoidRate()).isEqualTo(55);
     }
 }

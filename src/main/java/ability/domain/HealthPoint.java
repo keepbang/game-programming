@@ -39,6 +39,10 @@ public class HealthPoint {
         return remain;
     }
 
+    public boolean isDie() {
+        return healthPoint <= MIN_HEALTH_POINT;
+    }
+
     public int getCurrentHp() {
         return healthPoint;
     }
