@@ -12,7 +12,7 @@ public class AttackSpeedTest {
 
     @BeforeEach
     public void setUp() {
-        attackSpeed = new AttackSpeed(0.5);
+        attackSpeed = new AttackSpeed(1.0);
     }
 
 
@@ -39,18 +39,16 @@ public class AttackSpeedTest {
     @DisplayName("버프 받은 후 현재 공격속도 검증")
     public void attackSpeedUp() {
         // given
-        AttackSpeed attackSpeed = new AttackSpeed(1.0);
         // when
         attackSpeed.changeBuff(500, 10);
         // then
-        assertThat(attackSpeed.currentDelaySecond()).isEqualTo(0.2);
+        assertThat(attackSpeed.currentDelaySecond()).isEqualTo(0.17);
     }
 
     @Test
     @DisplayName("공격속도가 낮아지면 공격 후 딜레이는 증가한다.")
     public void attackSpeedDown() {
         // given
-        AttackSpeed attackSpeed = new AttackSpeed(1.0);
         // when
         attackSpeed.changeBuff(-15, 10);
         // then

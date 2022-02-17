@@ -46,11 +46,11 @@ public abstract class Character {
     }
 
     public void mount(Weapon weapon) {
-        if (weapon.getCharacterType().equals(characterType)) {
-            this.weapon = weapon;
-            weapon.mount(ability);
+        if (!weapon.getCharacterType().equals(characterType)) {
+            throw new CannotMountWeaponException();
         }
-        throw new CannotMountWeaponException();
+        this.weapon = weapon;
+        weapon.mount(ability);
     }
 
     public void unMount() {

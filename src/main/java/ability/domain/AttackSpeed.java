@@ -3,6 +3,8 @@ package ability.domain;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+import static common.util.TimeUtil.secondToNanos;
+
 public class AttackSpeed extends CommonAbility {
     private double delaySecond;
     private LocalDateTime nextAttackTime;
@@ -15,7 +17,7 @@ public class AttackSpeed extends CommonAbility {
     public boolean attacked() {
         if (isAttack()) {
             nextAttackTime = LocalDateTime.now()
-                    .plusNanos((long) (currentDelaySecond() * 1_000));
+                    .plusNanos(secondToNanos(currentDelaySecond()));
             return true;
         }
         return false;
@@ -27,10 +29,20 @@ public class AttackSpeed extends CommonAbility {
     }
 
     public double currentDelaySecond() {
-        if (buffPercent < 0) {
-            return delaySecond + delaySecond * (Math.abs(buffPercent) / 100.0);
+        int percent = getBuffPercent();
+        return Math.round(calcBuffedSecond(percent) * 100) / 100.0;
+    }
+
+    private double calcBuffedSecond(int percent) {
+        if (percent <= 0) {
+
+            return delaySecond + (delaySecond * (Math.abs(percent) / 100.0));
         }
-        return Math.round((delaySecond / (buffPercent * 0.01)) * 100) / 100.0;
+        return delaySecond / calcHitCount(percent);
+    }
+
+    private double calcHitCount(int percent) {
+        return (1.0 +  (1.0 * percent / 100.0));
     }
 
     @Override
