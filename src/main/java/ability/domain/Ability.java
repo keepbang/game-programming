@@ -77,7 +77,7 @@ public class Ability {
         return status.currentStatus();
     }
 
-    public int currentAttack() {
+    public double currentAttack() {
         return attack.currentAttack();
     }
 

@@ -9,8 +9,8 @@ public class Attack extends CommonAbility {
         this.attack = attack;
     }
 
-    public int currentAttack() {
-        return attack + attack * buffPercent / 100;
+    public double currentAttack() {
+        return attack + (attack * getBuffPercent() / 100.0);
     }
 
     @Override

@@ -16,7 +16,7 @@ public class AvoidRate extends CommonAbility {
     }
 
     public int currentAvoidRate() {
-        return avoidRate + avoidRate * buffPercent / 100;
+        return avoidRate + avoidRate * getBuffPercent() / 100;
     }
 
     @Override

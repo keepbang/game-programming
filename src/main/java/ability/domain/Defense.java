@@ -10,7 +10,7 @@ public class Defense extends CommonAbility {
     }
 
     public int currentDefense() {
-        return defense + defense * buffPercent / 100;
+        return defense + defense * getBuffPercent() / 100;
     }
 
     @Override
