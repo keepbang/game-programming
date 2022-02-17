@@ -13,7 +13,7 @@ public class CharacterTest {
     private static final Ability TEST_ABILITY = Ability.init(1, 100, 100, 10, 0.7, 10, 50);
 
     public static Character generateTestCharacter(String characterType) {
-        return CharacterType.generateCharacter(characterType, TEST_ABILITY);
+        return CharacterRace.generateCharacter(characterType, TEST_ABILITY);
     }
 
     @ParameterizedTest
@@ -36,7 +36,7 @@ public class CharacterTest {
     @DisplayName("잘못된 종족이 입력되었을 경우")
     public void generateCharacterFailTest(String characterType) {
         assertThrows(WrongCharacterTypeException.class,
-                () -> CharacterType.generateCharacter(characterType, TEST_ABILITY),
+                () -> CharacterRace.generateCharacter(characterType, TEST_ABILITY),
                 "잘못된 종족을 입력하였습니다.");
     }
 }

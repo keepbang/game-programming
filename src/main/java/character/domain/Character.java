@@ -1,10 +1,10 @@
 package character.domain;
 
 import ability.domain.Ability;
-import ability.domain.StatusType;
+import common.exception.CannotMountWeaponException;
 import common.exception.NotFoundSkillException;
 import skill.domain.Skill;
-import skill.domain.SkillRace;
+import weapon.domain.Weapon;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +13,14 @@ import java.util.Objects;
 public abstract class Character {
     private Ability ability;
     private List<Skill> skills = new ArrayList<>();
+    private Weapon weapon;
+    private CharacterType characterType;
 
-    public Character(Ability ability, SkillRace race) {
+    public Character(Ability ability, CharacterType type) {
         this.ability = ability;
-        skills.addAll(Skill.getSkill(SkillRace.ALL));
-        skills.addAll(Skill.getSkill(race));
+        skills.addAll(Skill.getSkill(CharacterType.ALL));
+        skills.addAll(Skill.getSkill(type));
+        this.characterType = type;
     }
 
     public Ability getAbility() {
@@ -40,6 +43,19 @@ public abstract class Character {
         }
 
         return false;
+    }
+
+    public void mount(Weapon weapon) {
+        if (weapon.getCharacterType().equals(characterType)) {
+            this.weapon = weapon;
+            weapon.mount(ability);
+        }
+        throw new CannotMountWeaponException();
+    }
+
+    public void unMount() {
+        this.weapon.unMount(ability);
+        this.weapon = null;
     }
 
     @Override

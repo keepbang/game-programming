@@ -93,6 +93,23 @@ public class Ability {
         return attackSpeed.currentDelaySecond();
     }
 
+    public Attack getAttack() {
+        return attack;
+    }
+
+    public AttackSpeed getAttackSpeed() {
+        return attackSpeed;
+    }
+
+    public void mountWeapon(CommonAbility commonAbility, int percent) {
+        commonAbility.mountWeapon(percent);
+    }
+
+    public void unMountWeapon(CommonAbility commonAbility, int percent) {
+        commonAbility.unMountWeapon(percent);
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

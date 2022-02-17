@@ -8,6 +8,6 @@ public class Attack extends CommonAbility {
     }
 
     public int currentAttack() {
-        return attack + attack * buff / 100;
+        return attack + attack * buffPercent / 100;
     }
 }

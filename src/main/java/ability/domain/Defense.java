@@ -8,6 +8,6 @@ public class Defense extends CommonAbility {
     }
 
     public int currentDefense() {
-        return defense + defense * buff / 100;
+        return defense + defense * buffPercent / 100;
     }
 }

@@ -14,7 +14,7 @@ public class AvoidRate extends CommonAbility {
     }
 
     public int currentAvoidRate() {
-        return avoidRate + avoidRate * buff / 100;
+        return avoidRate + avoidRate * buffPercent / 100;
     }
 
 }
