@@ -20,7 +20,7 @@ public class RapidTest {
         Ability ability = elf.getAbility();
         // then
         assertThat(isUsedSkill).isTrue();
-        assertThat(ability.currentAttackSpeed()).isEqualTo(0.14);
+        assertThat(ability.currentAttackSpeed()).isEqualTo(0.12);
     }
 
 }

@@ -7,8 +7,8 @@ import weapon.domain.Weapon;
 public class LongSword extends Weapon {
     private static final int ATTACK_PERCENT = 10;
 
-    public LongSword(CharacterType characterType) {
-        super(characterType);
+    public LongSword() {
+        super(CharacterType.HUMAN);
     }
 
     @Override
