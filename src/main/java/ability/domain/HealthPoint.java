@@ -2,6 +2,8 @@ package ability.domain;
 
 import common.exception.MinimumHealthPointException;
 
+import java.util.Objects;
+
 public class HealthPoint {
     private static final int MIN_HEALTH_POINT = 0;
 
@@ -45,5 +47,19 @@ public class HealthPoint {
 
     public int getCurrentHp() {
         return healthPoint;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HealthPoint that = (HealthPoint) o;
+        return maxHealthPoint == that.maxHealthPoint
+                && healthPoint == that.healthPoint;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(maxHealthPoint, healthPoint);
     }
 }

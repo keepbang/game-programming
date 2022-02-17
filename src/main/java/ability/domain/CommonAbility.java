@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class CommonAbility {
     protected int buffPercent = 0;
-    protected LocalDateTime unlockBuffTime = LocalDateTime.now();
+    protected LocalDateTime unlockBuffTime = LocalDateTime.MIN;
     protected int weaponBuffPercent = 0;
 
     public void changeBuff(int percent, long durationSecond) {

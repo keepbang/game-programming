@@ -2,6 +2,8 @@ package ability.domain;
 
 import common.util.Rate;
 
+import java.util.Objects;
+
 public class AvoidRate extends CommonAbility {
     private int avoidRate;
 
@@ -17,4 +19,16 @@ public class AvoidRate extends CommonAbility {
         return avoidRate + avoidRate * buffPercent / 100;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AvoidRate avoidRate1 = (AvoidRate) o;
+        return avoidRate == avoidRate1.avoidRate;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(avoidRate);
+    }
 }

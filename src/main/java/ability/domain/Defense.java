@@ -1,5 +1,7 @@
 package ability.domain;
 
+import java.util.Objects;
+
 public class Defense extends CommonAbility {
     private int defense;
 
@@ -9,5 +11,18 @@ public class Defense extends CommonAbility {
 
     public int currentDefense() {
         return defense + defense * buffPercent / 100;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Defense defense1 = (Defense) o;
+        return defense == defense1.defense;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(defense);
     }
 }

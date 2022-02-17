@@ -21,7 +21,7 @@ public class Ability {
         this.attackSpeed = attackSpeed;
         this.defense = defense;
         this.avoidRate = avoidRate;
-        this.status = new Status(StatusType.ALIVE, LocalDateTime.MAX);
+        this.status = new Status(StatusType.ALIVE);
     }
 
     public static Ability init(int level, int healthPoint, int manaPoint, int attack, double attackSpeed, int defense, int avoidRate) {

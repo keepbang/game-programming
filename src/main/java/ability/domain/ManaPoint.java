@@ -1,5 +1,7 @@
 package ability.domain;
 
+import java.util.Objects;
+
 public class ManaPoint {
     private final int maxManaPoint;
     private int manaPoint;
@@ -31,5 +33,19 @@ public class ManaPoint {
 
     public int getCurrentMp() {
         return manaPoint;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ManaPoint that = (ManaPoint) o;
+        return maxManaPoint == that.maxManaPoint
+                && manaPoint == that.manaPoint;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(maxManaPoint, manaPoint);
     }
 }
