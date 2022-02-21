@@ -13,11 +13,11 @@ public class LongSword extends Weapon {
 
     @Override
     public void mount(Ability ability) {
-        ability.mountWeapon(ability.getAttack(), ATTACK_PERCENT);
+        ability.mountWeapon(ability.getPower(), ATTACK_PERCENT);
     }
 
     @Override
     public void unMount(Ability ability) {
-        ability.unMountWeapon(ability.getAttack(), ATTACK_PERCENT);
+        ability.unMountWeapon(ability.getPower(), ATTACK_PERCENT);
     }
 }

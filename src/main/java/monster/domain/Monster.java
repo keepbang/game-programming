@@ -1,6 +1,6 @@
 package monster.domain;
 
-import ability.domain.Attack;
+import ability.domain.Power;
 import ability.domain.Defense;
 import ability.domain.HealthPoint;
 import common.util.Rate;
@@ -12,19 +12,19 @@ public class Monster implements CounterAttack {
     private static final double COUNTER_DAMAGE_PERCENT = 0.7;
 
     private final HealthPoint healthPoint;
-    private final Attack attack;
+    private final Power power;
     private final Defense defense;
 
     public Monster(int healthPoint, int attack, int defense) {
         this.healthPoint = new HealthPoint(healthPoint);
-        this.attack = new Attack(attack);
+        this.power = new Power(attack);
         this.defense = new Defense(defense);
     }
 
     @Override
     public double counterDamage(Rate rate) {
         if (COUNTER_RATE >= rate.getRate()) {
-            return attack.currentAttack() * COUNTER_DAMAGE_PERCENT;
+            return power.currentPower() * COUNTER_DAMAGE_PERCENT;
         }
         return 0;
     }
@@ -35,12 +35,12 @@ public class Monster implements CounterAttack {
         if (o == null || getClass() != o.getClass()) return false;
         Monster monster = (Monster) o;
         return Objects.equals(healthPoint, monster.healthPoint)
-                && Objects.equals(attack, monster.attack)
+                && Objects.equals(power, monster.power)
                 && Objects.equals(defense, monster.defense);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(healthPoint, attack, defense);
+        return Objects.hash(healthPoint, power, defense);
     }
 }

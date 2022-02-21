@@ -7,28 +7,28 @@ public class Ability {
     private Level level;
     private HealthPoint healthPoint;
     private ManaPoint manaPoint;
-    private Attack attack;
+    private Power power;
     private AttackSpeed attackSpeed;
     private Defense defense;
     private AvoidRate avoidRate;
     private Status status;
 
-    private Ability(Level level, HealthPoint healthPoint, ManaPoint manaPoint, Attack attack, AttackSpeed attackSpeed, Defense defense, AvoidRate avoidRate) {
+    private Ability(Level level, HealthPoint healthPoint, ManaPoint manaPoint, Power power, AttackSpeed attackSpeed, Defense defense, AvoidRate avoidRate) {
         this.level = level;
         this.healthPoint = healthPoint;
         this.manaPoint = manaPoint;
-        this.attack = attack;
+        this.power = power;
         this.attackSpeed = attackSpeed;
         this.defense = defense;
         this.avoidRate = avoidRate;
         this.status = new Status(StatusType.ALIVE);
     }
 
-    public static Ability init(int level, int healthPoint, int manaPoint, int attack, double attackSpeed, int defense, int avoidRate) {
+    public static Ability init(int level, int healthPoint, int manaPoint, int power, double attackSpeed, int defense, int avoidRate) {
         return new Ability(new Level(level),
                 new HealthPoint(healthPoint),
                 new ManaPoint(manaPoint),
-                new Attack(attack),
+                new Power(power),
                 new AttackSpeed(attackSpeed),
                 new Defense(defense),
                 new AvoidRate(avoidRate));
@@ -53,8 +53,8 @@ public class Ability {
         status.change(type, unlockStatusTime);
     }
 
-    public void attackBuff(int percent, long durationSecond) {
-        attack.changeBuff(percent, durationSecond);
+    public void powerBuff(int percent, long durationSecond) {
+        power.changeBuff(percent, durationSecond);
     }
 
     public void attackSpeedBuff(int percent, long durationSecond) {
@@ -77,8 +77,8 @@ public class Ability {
         return status.currentStatus();
     }
 
-    public double currentAttack() {
-        return attack.currentAttack();
+    public double currentPower() {
+        return power.currentPower();
     }
 
     public int currentDefense() {
@@ -93,8 +93,8 @@ public class Ability {
         return attackSpeed.currentDelaySecond();
     }
 
-    public Attack getAttack() {
-        return attack;
+    public Power getPower() {
+        return power;
     }
 
     public AttackSpeed getAttackSpeed() {
@@ -118,7 +118,7 @@ public class Ability {
         return Objects.equals(level, ability.level)
                 && Objects.equals(healthPoint, ability.healthPoint)
                 && Objects.equals(manaPoint, ability.manaPoint)
-                && Objects.equals(attack, ability.attack)
+                && Objects.equals(power, ability.power)
                 && Objects.equals(attackSpeed, ability.attackSpeed)
                 && Objects.equals(defense, ability.defense)
                 && Objects.equals(avoidRate, ability.avoidRate)
@@ -127,6 +127,6 @@ public class Ability {
 
     @Override
     public int hashCode() {
-        return Objects.hash(level, healthPoint, manaPoint, attack, attackSpeed, defense, avoidRate, status);
+        return Objects.hash(level, healthPoint, manaPoint, power, attackSpeed, defense, avoidRate, status);
     }
 }

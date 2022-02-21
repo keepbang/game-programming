@@ -24,7 +24,7 @@ public class SteamTest {
         Ability ability = character.getAbility();
         // then
         assertThat(isUsedSkill).isTrue();
-        assertThat(ability.currentAttack()).isEqualTo(12);
+        assertThat(ability.currentPower()).isEqualTo(12);
     }
 
 }

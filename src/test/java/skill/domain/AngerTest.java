@@ -20,7 +20,7 @@ public class AngerTest {
         Ability ability = orc.getAbility();
         // then
         assertThat(isUsedSkill).isTrue();
-        assertThat(ability.currentAttack()).isEqualTo(15);
+        assertThat(ability.currentPower()).isEqualTo(15);
         assertThat(ability.currentDefense()).isEqualTo(9);
     }
 

@@ -20,6 +20,6 @@ public class FrenzyTest {
         Ability ability = orc.getAbility();
         // then
         assertThat(isUsedSkill).isTrue();
-        assertThat(ability.currentAttack()).isEqualTo(60);
+        assertThat(ability.currentPower()).isEqualTo(60);
     }
 }
