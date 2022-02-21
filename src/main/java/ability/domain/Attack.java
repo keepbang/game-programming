@@ -1,5 +1,7 @@
 package ability.domain;
 
+import common.util.ValueUtil;
+
 import java.util.Objects;
 
 public class Attack extends CommonAbility {
@@ -10,6 +12,10 @@ public class Attack extends CommonAbility {
     }
 
     public double currentAttack() {
+        return ValueUtil.round(calcBuffedAttack(), 2);
+    }
+
+    private double calcBuffedAttack() {
         return attack + (attack * getBuffPercent() / 100.0);
     }
 

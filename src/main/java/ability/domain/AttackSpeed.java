@@ -1,5 +1,7 @@
 package ability.domain;
 
+import common.util.ValueUtil;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -29,13 +31,12 @@ public class AttackSpeed extends CommonAbility {
     }
 
     public double currentDelaySecond() {
-        int percent = getBuffPercent();
-        return Math.round(calcBuffedSecond(percent) * 100) / 100.0;
+        return ValueUtil.round(calcBuffedSecond(), 2);
     }
 
-    private double calcBuffedSecond(int percent) {
+    private double calcBuffedSecond() {
+        int percent = getBuffPercent();
         if (percent <= 0) {
-
             return delaySecond + (delaySecond * (Math.abs(percent) / 100.0));
         }
         return delaySecond / calcHitCount(percent);
