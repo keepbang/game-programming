@@ -13,7 +13,7 @@ public class AvoidRateTest {
 
     @ParameterizedTest
     @CsvSource(value = {
-            "49,true", "51, false"
+            "49,true", "51, false", "50, true"
     })
     @DisplayName("회피 할 수 있는지 확인")
     public void isAvoid(int rate, boolean avoid) {

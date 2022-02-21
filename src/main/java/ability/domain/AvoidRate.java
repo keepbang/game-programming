@@ -12,7 +12,7 @@ public class AvoidRate extends CommonAbility {
     }
 
     public boolean isAvoid(Rate rate) {
-        return avoidRate > rate.getRate();
+        return avoidRate >= rate.getRate();
     }
 
     public int currentAvoidRate() {
