@@ -1,6 +1,6 @@
 package character.domain;
 
-import ability.domain.Ability;
+import ability.domain.CharacterAbility;
 import common.exception.WrongCharacterTypeException;
 
 import java.util.Arrays;
@@ -11,13 +11,13 @@ public enum CharacterRace {
     ELF(Elf::new),
     ORC(Orc::new);
 
-    private final Function<Ability, Character> function;
+    private final Function<CharacterAbility, Character> function;
 
-    CharacterRace(Function<Ability, Character> function) {
+    CharacterRace(Function<CharacterAbility, Character> function) {
         this.function = function;
     }
 
-    public static Character generateCharacter(String type, Ability ability) {
+    public static Character generateCharacter(String type, CharacterAbility ability) {
         return Arrays.stream(values())
                 .filter(characterType -> characterType.name()
                         .equals(type.toUpperCase()))

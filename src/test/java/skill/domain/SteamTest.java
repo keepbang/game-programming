@@ -1,6 +1,6 @@
 package skill.domain;
 
-import ability.domain.Ability;
+import ability.domain.CharacterAbility;
 import character.domain.Character;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -21,7 +21,7 @@ public class SteamTest {
         Character character = makeCharacter(characterType);
         // when
         boolean isUsedSkill = character.castSkill(Skill.STEAM);
-        Ability ability = character.getAbility();
+        CharacterAbility ability = character.getAbility();
         // then
         assertThat(isUsedSkill).isTrue();
         assertThat(ability.currentPower()).isEqualTo(12);

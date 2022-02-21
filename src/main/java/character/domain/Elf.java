@@ -1,9 +1,9 @@
 package character.domain;
 
-import ability.domain.Ability;
+import ability.domain.CharacterAbility;
 
 public class Elf extends Character {
-    public Elf(Ability ability) {
+    public Elf(CharacterAbility ability) {
         super(ability, CharacterType.ELF);
     }
 }

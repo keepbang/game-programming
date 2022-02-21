@@ -1,6 +1,6 @@
 package character.domain;
 
-import ability.domain.Ability;
+import ability.domain.CharacterAbility;
 import common.exception.WrongCharacterTypeException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CharacterTest {
     public static Character makeCharacter(String characterType) {
-        Ability ability = Ability.init(1, 100, 100, 10, 0.7, 10, 50);
+        CharacterAbility ability = CharacterAbility.init(1, 100, 100, 10, 0.7, 10, 50);
         return CharacterRace.generateCharacter(characterType, ability);
     }
 
@@ -26,7 +26,7 @@ public class CharacterTest {
         Character actual = makeCharacter(characterType);
         // then
         assertThat(actual.getAbility())
-                .isEqualTo(Ability.init(1, 100, 100, 10, 0.7, 10, 50));
+                .isEqualTo(CharacterAbility.init(1, 100, 100, 10, 0.7, 10, 50));
     }
 
     @ParameterizedTest

@@ -1,6 +1,6 @@
 package skill.domain;
 
-import ability.domain.Ability;
+import ability.domain.CharacterAbility;
 import ability.domain.ManaPoint;
 import character.domain.CharacterType;
 
@@ -42,7 +42,7 @@ public enum Skill {
                 .collect(Collectors.toList());
     }
 
-    public void cast(Ability ability) {
+    public void cast(CharacterAbility ability) {
         active.action(ability, durationSecond);
     }
 

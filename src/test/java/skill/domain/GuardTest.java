@@ -1,6 +1,6 @@
 package skill.domain;
 
-import ability.domain.Ability;
+import ability.domain.CharacterAbility;
 import character.domain.Character;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ public class GuardTest {
         Character human = makeCharacter("human");
         // when
         boolean isUsedSkill = human.castSkill(Skill.GUARD);
-        Ability ability = human.getAbility();
+        CharacterAbility ability = human.getAbility();
         // then
         assertThat(isUsedSkill).isTrue();
         assertThat(ability.currentDefense()).isEqualTo(13);

@@ -1,6 +1,6 @@
 package weapon.item;
 
-import ability.domain.Ability;
+import ability.domain.CharacterAbility;
 import character.domain.CharacterType;
 import weapon.domain.Weapon;
 
@@ -12,12 +12,12 @@ public class IronBow extends Weapon {
     }
 
     @Override
-    public void mount(Ability ability) {
+    public void mount(CharacterAbility ability) {
         ability.mountWeapon(ability.getAttackSpeed(), ATTACK_SPEED_PERCENT);
     }
 
     @Override
-    public void unMount(Ability ability) {
+    public void unMount(CharacterAbility ability) {
         ability.unMountWeapon(ability.getAttackSpeed(), ATTACK_SPEED_PERCENT);
     }
 }

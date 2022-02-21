@@ -1,6 +1,6 @@
 package skill.domain;
 
-import ability.domain.Ability;
+import ability.domain.CharacterAbility;
 import character.domain.Character;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ public class RapidTest {
         Character elf = generateUltimateCharacter("elf");
         // when
         boolean isUsedSkill = elf.castSkill(Skill.RAPID);
-        Ability ability = elf.getAbility();
+        CharacterAbility ability = elf.getAbility();
         // then
         assertThat(isUsedSkill).isTrue();
         assertThat(ability.currentAttackSpeed()).isEqualTo(0.12);

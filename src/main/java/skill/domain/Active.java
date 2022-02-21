@@ -1,7 +1,7 @@
 package skill.domain;
 
-import ability.domain.Ability;
+import ability.domain.CharacterAbility;
 
 public interface Active {
-    void action(Ability ability, long durationSecond);
+    void action(CharacterAbility ability, long durationSecond);
 }

@@ -1,6 +1,6 @@
 package skill.domain;
 
-import ability.domain.Ability;
+import ability.domain.CharacterAbility;
 import character.domain.Character;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ public class FrenzyTest {
         Character orc = generateUltimateCharacter("orc");
         // when
         boolean isUsedSkill = orc.castSkill(Skill.FRENZY);
-        Ability ability = orc.getAbility();
+        CharacterAbility ability = orc.getAbility();
         // then
         assertThat(isUsedSkill).isTrue();
         assertThat(ability.currentPower()).isEqualTo(60);

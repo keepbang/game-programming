@@ -1,6 +1,6 @@
 package skill.domain;
 
-import ability.domain.Ability;
+import ability.domain.CharacterAbility;
 import ability.domain.StatusType;
 import character.domain.Character;
 import org.junit.jupiter.api.DisplayName;
@@ -18,7 +18,7 @@ public class InvincibleTest {
         Character human = generateUltimateCharacter("human");
         // when
         boolean isUsedSkill = human.castSkill(Skill.INVINCIBLE);
-        Ability ability = human.getAbility();
+        CharacterAbility ability = human.getAbility();
         // then
         assertThat(isUsedSkill).isTrue();
         assertThat(ability.currentStatus()).isEqualTo(StatusType.INVINCIBLE);

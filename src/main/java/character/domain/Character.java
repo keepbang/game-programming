@@ -1,6 +1,6 @@
 package character.domain;
 
-import ability.domain.Ability;
+import ability.domain.CharacterAbility;
 import common.exception.CannotMountWeaponException;
 import common.exception.NotFoundSkillException;
 import skill.domain.Skill;
@@ -11,19 +11,19 @@ import java.util.List;
 import java.util.Objects;
 
 public class Character {
-    private Ability ability;
+    private CharacterAbility ability;
     private List<Skill> skills = new ArrayList<>();
     private Weapon weapon;
     private CharacterType characterType;
 
-    public Character(Ability ability, CharacterType type) {
+    public Character(CharacterAbility ability, CharacterType type) {
         this.ability = ability;
         skills.addAll(Skill.getSkill(CharacterType.ALL));
         skills.addAll(Skill.getSkill(type));
         this.characterType = type;
     }
 
-    public Ability getAbility() {
+    public CharacterAbility getAbility() {
         return ability;
     }
 
