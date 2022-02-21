@@ -16,16 +16,12 @@ public class AttackSpeed extends BuffAbility {
         nextAttackTime = LocalDateTime.MIN;
     }
 
-    public boolean increaseByDelay() {
-        if (isAttack()) {
-            nextAttackTime = LocalDateTime.now()
-                    .plusNanos(secondToNanos(currentDelaySecond()));
-            return true;
-        }
-        return false;
+    public void increaseByDelay() {
+        nextAttackTime = LocalDateTime.now()
+                .plusNanos(secondToNanos(currentDelaySecond()));
     }
 
-    private boolean isAttack() {
+    public boolean isAttack() {
         LocalDateTime current = LocalDateTime.now();
         return nextAttackTime.isBefore(current) || nextAttackTime.isEqual(current);
     }
