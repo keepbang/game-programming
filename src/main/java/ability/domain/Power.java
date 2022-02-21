@@ -4,7 +4,7 @@ import common.util.ValueUtil;
 
 import java.util.Objects;
 
-public class Power extends CommonAbility {
+public class Power extends BuffAbility {
     private int power;
 
     public Power(int power) {

@@ -7,7 +7,7 @@ import java.util.Objects;
 
 import static common.util.TimeUtil.secondToNanos;
 
-public class AttackSpeed extends CommonAbility {
+public class AttackSpeed extends BuffAbility {
     private double delaySecond;
     private LocalDateTime nextAttackTime;
 

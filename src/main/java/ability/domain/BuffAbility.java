@@ -2,7 +2,7 @@ package ability.domain;
 
 import java.time.LocalDateTime;
 
-public class CommonAbility {
+public class BuffAbility {
     private int buffPercent = 0;
     private LocalDateTime unlockBuffTime = LocalDateTime.MIN;
     private int weaponBuffPercent = 0;

@@ -4,7 +4,7 @@ import common.util.Rate;
 
 import java.util.Objects;
 
-public class AvoidRate extends CommonAbility {
+public class AvoidRate extends BuffAbility {
     private int avoidRate;
 
     public AvoidRate(int avoidRate) {

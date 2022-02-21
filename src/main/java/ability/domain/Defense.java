@@ -2,7 +2,7 @@ package ability.domain;
 
 import java.util.Objects;
 
-public class Defense extends CommonAbility {
+public class Defense extends BuffAbility {
     private int defense;
 
     public Defense(int defense) {

@@ -101,12 +101,12 @@ public class Ability {
         return attackSpeed;
     }
 
-    public void mountWeapon(CommonAbility commonAbility, int percent) {
-        commonAbility.mountWeapon(percent);
+    public void mountWeapon(BuffAbility buffAbility, int percent) {
+        buffAbility.mountWeapon(percent);
     }
 
-    public void unMountWeapon(CommonAbility commonAbility, int percent) {
-        commonAbility.unMountWeapon(percent);
+    public void unMountWeapon(BuffAbility buffAbility, int percent) {
+        buffAbility.unMountWeapon(percent);
     }
 
 
