@@ -20,7 +20,7 @@ public class AttackSpeedTest {
     @DisplayName("공격 성공")
     public void attackSuccess() {
         // when
-        boolean actual = attackSpeed.attacked();
+        boolean actual = attackSpeed.increaseByDelay();
         // then
         assertThat(actual).isTrue();
     }
@@ -29,8 +29,8 @@ public class AttackSpeedTest {
     @DisplayName("공격을 한 후에 대기시간동안은 공격을 할 수 없다.")
     public void attackFail() {
         // when
-        attackSpeed.attacked();
-        boolean actual = attackSpeed.attacked();
+        attackSpeed.increaseByDelay();
+        boolean actual = attackSpeed.increaseByDelay();
         // then
         assertThat(actual).isFalse();
     }

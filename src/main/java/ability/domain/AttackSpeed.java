@@ -14,7 +14,7 @@ public class AttackSpeed extends CommonAbility {
         nextAttackTime = LocalDateTime.MIN;
     }
 
-    public boolean attacked() {
+    public boolean increaseByDelay() {
         if (isAttack()) {
             nextAttackTime = LocalDateTime.now()
                     .plusNanos(secondToNanos(currentDelaySecond()));
