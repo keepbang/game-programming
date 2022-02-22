@@ -14,7 +14,7 @@ public class MonsterService {
     /**
      * 몬스터 생성
      */
-    private Monster createMonster(MonsterAbility ability) {
+    public Monster createMonster(MonsterAbility ability) {
         return new Monster(ability);
     }
 
@@ -22,7 +22,7 @@ public class MonsterService {
      * 몬스터 공격
      * - 캐릭터의 회피율에 따라 공격을 회피한다.
      */
-    private boolean attack(Character character, Monster monster) {
+    public boolean attack(Character character, Monster monster) {
         if (character.isAvoid(rateGenerator)) {
             return false;
         }
