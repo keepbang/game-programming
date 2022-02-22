@@ -5,16 +5,16 @@ import character.domain.Character;
 import character.domain.CharacterRace;
 import common.exception.CannotMountWeaponException;
 import common.exception.NotFoundSkillException;
-import common.util.RandomRateGenerator;
+import common.util.Rate;
 import monster.domain.Monster;
 import skill.domain.Skill;
 import weapon.domain.Weapon;
 
 public class CharacterService {
-    private final RandomRateGenerator rateGenerator;
+    private final Rate rateGenerator;
 
-    public CharacterService() {
-        this.rateGenerator = RandomRateGenerator.getInstance();
+    public CharacterService(Rate rate) {
+        this.rateGenerator = rate;
     }
 
     /**

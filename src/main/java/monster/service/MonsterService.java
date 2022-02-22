@@ -2,14 +2,14 @@ package monster.service;
 
 import ability.domain.MonsterAbility;
 import character.domain.Character;
-import common.util.RandomRateGenerator;
+import common.util.Rate;
 import monster.domain.Monster;
 
 public class MonsterService {
-    private final RandomRateGenerator rateGenerator;
+    private final Rate rateGenerator;
 
-    public MonsterService() {
-        this.rateGenerator = RandomRateGenerator.getInstance();
+    public MonsterService(Rate rate) {
+        this.rateGenerator = rate;
     }
     /**
      * 몬스터 생성
