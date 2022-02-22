@@ -64,7 +64,10 @@ public class CharacterService {
     /**
      *  캐릭터 레벨업
      */
-    public CharacterAbility levelUp(Character character) {
-        return character.levelUp();
+    public Character levelUp(Character character, Monster monster) {
+        if (monster.isDie()) {
+            character.levelUp();
+        }
+        return character;
     }
 }

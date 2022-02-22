@@ -59,9 +59,8 @@ public class Character extends CharacterAbility implements Attack {
      * 캐릭터 레벨업
      */
     @Override
-    public CharacterAbility levelUp() {
+    public void levelUp() {
         super.levelUp();
-        return this;
     }
 
     /**
