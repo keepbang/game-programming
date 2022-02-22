@@ -1,7 +1,6 @@
 package common.util;
 
 public final class ValueUtil {
-
     private ValueUtil() {
     }
 

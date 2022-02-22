@@ -7,6 +7,7 @@ public abstract class Weapon {
     private final CharacterType characterType;
 
     public abstract void mount(CharacterAbility ability);
+
     public abstract void unMount(CharacterAbility ability);
 
     public Weapon(CharacterType characterType) {

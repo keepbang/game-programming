@@ -39,7 +39,7 @@ public class AttackSpeed extends BuffAbility {
     }
 
     private double calcHitCount(int percent) {
-        return (1.0 +  (1.0 * percent / 100.0));
+        return (1.0 + (1.0 * percent / 100.0));
     }
 
     @Override

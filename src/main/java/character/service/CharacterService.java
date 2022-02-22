@@ -55,14 +55,14 @@ public class CharacterService {
     public boolean cast(Character character, Skill skill) {
         try {
             return character.castSkill(skill);
-        } catch(NotFoundSkillException e) {
+        } catch (NotFoundSkillException e) {
             System.out.println(e.getMessage());
             return false;
         }
     }
 
     /**
-     *  캐릭터 레벨업
+     * 캐릭터 레벨업
      */
     public boolean levelUp(Character character, Monster monster) {
         if (monster.isDie()) {

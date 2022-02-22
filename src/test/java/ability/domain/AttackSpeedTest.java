@@ -15,7 +15,6 @@ public class AttackSpeedTest {
         attackSpeed = new AttackSpeed(1.0);
     }
 
-
     @Test
     @DisplayName("공격 성공 후 대기시간동안 공격 불가능")
     public void nextAttackFalse() {

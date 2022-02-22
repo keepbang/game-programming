@@ -12,6 +12,7 @@ import skill.domain.Skill;
 
 import static ability.domain.MonsterAbilityTest.testMonsterAbility;
 import static character.domain.CharacterTest.makeCharacter;
+import static character.domain.UltimateCharacterTest.generateUltimateCharacter;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MonsterServiceTest {
@@ -37,8 +38,7 @@ public class MonsterServiceTest {
     public void monsterAttackFailByInvincibleCharacter() {
         // given
         MonsterService monsterService = new MonsterService(() -> 50);
-        CharacterAbility characterAbility = CharacterAbility.init(99, 100, 100, 50, 1, 10, 50);
-        Character character = CharacterRace.generateCharacter("human", characterAbility);
+        Character character = generateUltimateCharacter("human");
         Monster monster = monsterService.createMonster(testMonsterAbility());
         // when
         character.castSkill(Skill.INVINCIBLE);

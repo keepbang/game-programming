@@ -12,6 +12,7 @@ public class MonsterService {
     public MonsterService(Rate rate) {
         this.rateGenerator = rate;
     }
+
     /**
      * 몬스터 생성
      */

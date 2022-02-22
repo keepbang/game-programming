@@ -31,9 +31,6 @@ public class WeaponTest {
     @MethodSource
     @DisplayName("무기를 잘 못 착용했을 경우")
     public void wrongMountWeapon(Character character, Weapon weapon) {
-        // given
-        // when
-        // then
         assertThatThrownBy(() -> character.mount(weapon))
                 .isInstanceOf(CannotMountWeaponException.class);
     }
