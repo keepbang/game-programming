@@ -3,6 +3,7 @@ package character.service;
 import ability.domain.CharacterAbility;
 import character.domain.Character;
 import common.exception.WrongCharacterTypeException;
+import common.util.RandomRateGenerator;
 import monster.domain.Monster;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -25,7 +26,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CharacterServiceTest {
 
-    private CharacterService service = new CharacterService();
+    private final CharacterService service = new CharacterService(RandomRateGenerator.getInstance());
 
     @ParameterizedTest
     @ValueSource(strings = {
