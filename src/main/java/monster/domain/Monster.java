@@ -26,9 +26,13 @@ public class Monster extends MonsterAbility implements CounterAttack, Attack {
         return 0;
     }
 
+    /**
+     * 몬스터 공격
+     * - target의 hp가 0(죽은 상태)이면 false를 반환한다.
+     */
     @Override
     public boolean attack(CommonAbility target) {
         target.downHp(currentPower());
-        return target.isDie();
+        return !target.isDie();
     }
 }
