@@ -6,12 +6,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static ability.domain.CharacterAbilityTest.testCharacterAbility;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CharacterTest {
     public static Character makeCharacter(String characterType) {
-        CharacterAbility ability = CharacterAbility.init(1, 100, 100, 10, 0.7, 10, 50);
+        CharacterAbility ability = testCharacterAbility();
         return CharacterRace.generateCharacter(characterType, ability);
     }
 

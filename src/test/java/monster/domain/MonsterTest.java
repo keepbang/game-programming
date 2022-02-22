@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static ability.domain.MonsterAbilityTest.testMonsterAbility;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MonsterTest {
@@ -15,14 +16,14 @@ public class MonsterTest {
 
     @BeforeEach
     public void setUp() {
-        MonsterAbility ability = MonsterAbility.init(100, 10, 10);
+        MonsterAbility ability = testMonsterAbility();
         monster = new Monster(ability);
     }
 
     @Test
     @DisplayName("몬스터 생성")
     public void create() {
-        assertThat(monster).isEqualTo(new Monster(MonsterAbility.init(100, 10, 10)));
+        assertThat(monster).isEqualTo(new Monster(testMonsterAbility()));
     }
 
     @ParameterizedTest
