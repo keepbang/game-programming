@@ -72,6 +72,10 @@ public class CharacterAbility extends CommonAbility {
         return attackSpeed.currentDelaySecond();
     }
 
+    public int currentMp() {
+        return manaPoint.getCurrentMp();
+    }
+
     public AttackSpeed getAttackSpeed() {
         return attackSpeed;
     }

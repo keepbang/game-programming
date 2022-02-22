@@ -56,14 +56,6 @@ public class Character extends CharacterAbility implements Attack {
     }
 
     /**
-     * 캐릭터 레벨업
-     */
-    @Override
-    public void levelUp() {
-        super.levelUp();
-    }
-
-    /**
      * 캐릭터 공격
      * - 다음 공격이 가능할 경우에만 공격 한다간
      * - target의 HP를 줄인다.
