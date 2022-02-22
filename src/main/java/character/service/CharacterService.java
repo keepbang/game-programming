@@ -64,10 +64,11 @@ public class CharacterService {
     /**
      *  캐릭터 레벨업
      */
-    public Character levelUp(Character character, Monster monster) {
+    public boolean levelUp(Character character, Monster monster) {
         if (monster.isDie()) {
             character.levelUp();
+            return true;
         }
-        return character;
+        return false;
     }
 }
