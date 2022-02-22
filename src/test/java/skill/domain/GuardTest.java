@@ -17,10 +17,9 @@ public class GuardTest {
         Character human = makeCharacter("human");
         // when
         boolean isUsedSkill = human.castSkill(Skill.GUARD);
-        CharacterAbility ability = human.getAbility();
         // then
         assertThat(isUsedSkill).isTrue();
-        assertThat(ability.currentDefense()).isEqualTo(13);
+        assertThat(human.currentDefense()).isEqualTo(13);
     }
 
 }

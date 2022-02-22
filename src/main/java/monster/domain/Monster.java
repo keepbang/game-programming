@@ -1,46 +1,34 @@
 package monster.domain;
 
-import ability.domain.Power;
-import ability.domain.Defense;
-import ability.domain.HealthPoint;
+import ability.domain.CommonAbility;
+import ability.domain.MonsterAbility;
+import action.Attack;
 import common.util.Rate;
 
-import java.util.Objects;
-
-public class Monster implements CounterAttack {
+public class Monster extends MonsterAbility implements CounterAttack, Attack {
     private static final int COUNTER_RATE = 30;
     private static final double COUNTER_DAMAGE_PERCENT = 0.7;
 
-    private final HealthPoint healthPoint;
-    private final Power power;
-    private final Defense defense;
-
-    public Monster(int healthPoint, int attack, int defense) {
-        this.healthPoint = new HealthPoint(healthPoint);
-        this.power = new Power(attack);
-        this.defense = new Defense(defense);
+    public Monster(MonsterAbility ability) {
+        super(ability);
     }
 
+    /**
+     * 반격
+     * - 확률이 30이하라면 대미지를 계산해서 반환한다.
+     * - 확률이 30보다 클 경우에는 0을 반환한다.
+     */
     @Override
     public double counterDamage(Rate rate) {
         if (COUNTER_RATE >= rate.getRate()) {
-            return power.currentPower() * COUNTER_DAMAGE_PERCENT;
+            return currentPower() * COUNTER_DAMAGE_PERCENT;
         }
         return 0;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Monster monster = (Monster) o;
-        return Objects.equals(healthPoint, monster.healthPoint)
-                && Objects.equals(power, monster.power)
-                && Objects.equals(defense, monster.defense);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(healthPoint, power, defense);
+    public boolean attack(CommonAbility target) {
+        target.downHp(currentPower());
+        return target.isDie();
     }
 }

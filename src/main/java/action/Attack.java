@@ -1,5 +1,7 @@
 package action;
 
+import ability.domain.CommonAbility;
+
 public interface Attack {
-    boolean attack(Attack attack);
+    boolean attack(CommonAbility target);
 }

@@ -12,7 +12,7 @@ public class AvoidRate extends BuffAbility {
     }
 
     public boolean isAvoid(Rate rate) {
-        return avoidRate >= rate.getRate();
+        return currentAvoidRate() >= rate.getRate();
     }
 
     public int currentAvoidRate() {

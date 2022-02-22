@@ -1,5 +1,7 @@
 package ability.domain;
 
+import common.util.Rate;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -17,6 +19,15 @@ public class CharacterAbility extends CommonAbility {
         this.attackSpeed = attackSpeed;
         this.avoidRate = avoidRate;
         this.status = new Status(StatusType.ALIVE);
+    }
+
+    public CharacterAbility(CharacterAbility ability) {
+        super(ability);
+        this.level = ability.level;
+        this.manaPoint = ability.manaPoint;
+        this.attackSpeed = ability.attackSpeed;
+        this.avoidRate = ability.avoidRate;
+        this.status = ability.status;
     }
 
     public static CharacterAbility init(int level, int healthPoint, int manaPoint, int power, double attackSpeed, int defense, int avoidRate) {
@@ -71,6 +82,18 @@ public class CharacterAbility extends CommonAbility {
 
     public void unMountWeapon(BuffAbility buffAbility, int percent) {
         buffAbility.unMountWeapon(percent);
+    }
+
+    public boolean nextAttack() {
+        return attackSpeed.nextAttack();
+    }
+
+    public void increaseByDelay() {
+        attackSpeed.increaseByDelay();
+    }
+
+    public boolean isAvoid(Rate rate) {
+        return avoidRate.isAvoid(rate);
     }
 
     @Override

@@ -17,11 +17,10 @@ public class AngerTest {
         Character orc = makeCharacter("orc");
         // when
         boolean isUsedSkill = orc.castSkill(Skill.ANGER);
-        CharacterAbility ability = orc.getAbility();
         // then
         assertThat(isUsedSkill).isTrue();
-        assertThat(ability.currentPower()).isEqualTo(15);
-        assertThat(ability.currentDefense()).isEqualTo(9);
+        assertThat(orc.currentPower()).isEqualTo(15);
+        assertThat(orc.currentDefense()).isEqualTo(9);
     }
 
 }

@@ -1,6 +1,8 @@
 package character.domain;
 
 import ability.domain.CharacterAbility;
+import ability.domain.CommonAbility;
+import action.Attack;
 import common.exception.CannotMountWeaponException;
 import common.exception.NotFoundSkillException;
 import skill.domain.Skill;
@@ -10,21 +12,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Character {
-    private CharacterAbility ability;
+public class Character extends CharacterAbility implements Attack {
     private List<Skill> skills = new ArrayList<>();
     private Weapon weapon;
     private CharacterType characterType;
 
     public Character(CharacterAbility ability, CharacterType type) {
-        this.ability = ability;
+        super(ability);
         skills.addAll(Skill.getSkill(CharacterType.ALL));
         skills.addAll(Skill.getSkill(type));
         this.characterType = type;
-    }
-
-    public CharacterAbility getAbility() {
-        return ability;
     }
 
     public boolean castSkill(Skill castedSkill) {
@@ -33,12 +30,12 @@ public class Character {
                 .findFirst()
                 .orElseThrow(NotFoundSkillException::new);
 
-        if (skill.isUltimate() && !ability.isUltimateLevel()) {
+        if (skill.isUltimate() && !isUltimateLevel()) {
             return false;
         }
 
-        if (ability.useMana(skill.getUseMana())) {
-            skill.cast(ability);
+        if (useMana(skill.getUseMana())) {
+            skill.cast(this);
             return true;
         }
 
@@ -50,24 +47,44 @@ public class Character {
             throw new CannotMountWeaponException();
         }
         this.weapon = weapon;
-        weapon.mount(ability);
+        weapon.mount(this);
     }
 
     public void unMount() {
-        this.weapon.unMount(ability);
+        this.weapon.unMount(this);
         this.weapon = null;
+    }
+
+    /**
+     * 캐릭터 공격
+     * - 다음 공격이 가능할 경우에만 공격 한다간
+     * - target의 HP를 줄인다.
+     * - 딜레이 시간을 계산해서 다음 공격 가능시간을 저장한다.
+     * - target의 hp가 0이면 false를 반환한다.
+     */
+    @Override
+    public boolean attack(CommonAbility target) {
+        if (!nextAttack()) {
+            return false;
+        }
+        target.downHp(currentPower());
+        increaseByDelay();
+        return !target.isDie();
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Character character = (Character) o;
-        return Objects.equals(ability, character.ability);
+        return Objects.equals(skills, character.skills)
+                && Objects.equals(weapon, character.weapon)
+                && characterType == character.characterType;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ability);
+        return Objects.hash(super.hashCode(), skills, weapon, characterType);
     }
 }

@@ -7,18 +7,22 @@ public class CommonAbility {
     private Power power;
     private Defense defense;
 
-    public CommonAbility(HealthPoint healthPoint, Power power, Defense defense) {
+    protected CommonAbility(HealthPoint healthPoint, Power power, Defense defense) {
         this.healthPoint = healthPoint;
         this.power = power;
         this.defense = defense;
+    }
+
+    public CommonAbility(CommonAbility ability) {
+        this(ability.healthPoint, ability.power, ability.defense);
     }
 
     public void upHp(int healPoint) {
         healthPoint.healHp(healPoint);
     }
 
-    public void downHp(int damage) {
-        healthPoint.downHp(damage);
+    public void downHp(double damage) {
+        healthPoint.downHp(damage - currentDefense());
     }
 
     public void powerBuff(int percent, long durationSecond) {
@@ -35,6 +39,14 @@ public class CommonAbility {
 
     public int currentDefense() {
         return defense.currentDefense();
+    }
+
+    public int currentHp() {
+        return healthPoint.getCurrentHp();
+    }
+
+    public boolean isDie() {
+        return healthPoint.isDie();
     }
 
     public Power getPower() {

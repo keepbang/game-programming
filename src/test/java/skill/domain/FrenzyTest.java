@@ -17,9 +17,8 @@ public class FrenzyTest {
         Character orc = generateUltimateCharacter("orc");
         // when
         boolean isUsedSkill = orc.castSkill(Skill.FRENZY);
-        CharacterAbility ability = orc.getAbility();
         // then
         assertThat(isUsedSkill).isTrue();
-        assertThat(ability.currentPower()).isEqualTo(60);
+        assertThat(orc.currentPower()).isEqualTo(60);
     }
 }

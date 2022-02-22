@@ -21,10 +21,9 @@ public class SteamTest {
         Character character = makeCharacter(characterType);
         // when
         boolean isUsedSkill = character.castSkill(Skill.STEAM);
-        CharacterAbility ability = character.getAbility();
         // then
         assertThat(isUsedSkill).isTrue();
-        assertThat(ability.currentPower()).isEqualTo(12);
+        assertThat(character.currentPower()).isEqualTo(12);
     }
 
 }

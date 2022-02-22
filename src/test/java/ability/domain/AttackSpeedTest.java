@@ -18,21 +18,21 @@ public class AttackSpeedTest {
 
     @Test
     @DisplayName("공격 성공 후 대기시간동안 공격 불가능")
-    public void isAttackFalse() {
+    public void nextAttackFalse() {
         // when
         attackSpeed.increaseByDelay();
         // then
-        assertThat(attackSpeed.isAttack()).isFalse();
+        assertThat(attackSpeed.nextAttack()).isFalse();
     }
 
     @Test
     @DisplayName("공격을 한 후에 대기시간이 지나면 공격을 할 수 있다.")
-    public void isAttackTrue() throws InterruptedException {
+    public void nextAttackTrue() throws InterruptedException {
         // when
         attackSpeed.increaseByDelay();
         Thread.sleep(1_000);
         // then
-        assertThat(attackSpeed.isAttack()).isTrue();
+        assertThat(attackSpeed.nextAttack()).isTrue();
     }
 
     @Test

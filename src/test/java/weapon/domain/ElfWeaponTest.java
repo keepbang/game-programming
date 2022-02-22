@@ -28,10 +28,10 @@ public class ElfWeaponTest {
     @DisplayName("엘프 무기 장착 후 공격력 검증")
     public void mountWeapon(Character character, Weapon weapon, double attackDelay) {
         // given
-        assertThat(character.getAbility().currentAttackSpeed()).isEqualTo(0.7);
+        assertThat(character.currentAttackSpeed()).isEqualTo(0.7);
         // when
         character.mount(weapon);
         // then
-        assertThat(character.getAbility().currentAttackSpeed()).isEqualTo(attackDelay);
+        assertThat(character.currentAttackSpeed()).isEqualTo(attackDelay);
     }
 }

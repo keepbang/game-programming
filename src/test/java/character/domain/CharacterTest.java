@@ -24,9 +24,9 @@ public class CharacterTest {
         // given
         // when
         Character actual = makeCharacter(characterType);
+        Character excepted = makeCharacter(characterType);
         // then
-        assertThat(actual.getAbility())
-                .isEqualTo(CharacterAbility.init(1, 100, 100, 10, 0.7, 10, 50));
+        assertThat(actual).isEqualTo(excepted);
     }
 
     @ParameterizedTest

@@ -18,10 +18,9 @@ public class InvincibleTest {
         Character human = generateUltimateCharacter("human");
         // when
         boolean isUsedSkill = human.castSkill(Skill.INVINCIBLE);
-        CharacterAbility ability = human.getAbility();
         // then
         assertThat(isUsedSkill).isTrue();
-        assertThat(ability.currentStatus()).isEqualTo(StatusType.INVINCIBLE);
+        assertThat(human.currentStatus()).isEqualTo(StatusType.INVINCIBLE);
     }
 
 }

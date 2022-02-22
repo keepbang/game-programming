@@ -17,10 +17,9 @@ public class RapidTest {
         Character elf = generateUltimateCharacter("elf");
         // when
         boolean isUsedSkill = elf.castSkill(Skill.RAPID);
-        CharacterAbility ability = elf.getAbility();
         // then
         assertThat(isUsedSkill).isTrue();
-        assertThat(ability.currentAttackSpeed()).isEqualTo(0.12);
+        assertThat(elf.currentAttackSpeed()).isEqualTo(0.12);
     }
 
 }

@@ -1,5 +1,6 @@
 package monster.domain;
 
+import ability.domain.MonsterAbility;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,13 +15,14 @@ public class MonsterTest {
 
     @BeforeEach
     public void setUp() {
-        monster = new Monster(100, 10, 10);
+        MonsterAbility ability = MonsterAbility.init(100, 10, 10);
+        monster = new Monster(ability);
     }
 
     @Test
     @DisplayName("몬스터 생성")
     public void create() {
-        assertThat(monster).isEqualTo(new Monster(100, 10, 10));
+        assertThat(monster).isEqualTo(new Monster(MonsterAbility.init(100, 10, 10)));
     }
 
     @ParameterizedTest

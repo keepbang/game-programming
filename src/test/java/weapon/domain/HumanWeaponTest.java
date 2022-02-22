@@ -28,10 +28,10 @@ public class HumanWeaponTest {
     @DisplayName("휴먼 무기 장착 후 공격력 검증")
     public void mountWeapon(Character character, Weapon weapon, double attack) {
         // given
-        assertThat(character.getAbility().currentPower()).isEqualTo(10);
+        assertThat(character.currentPower()).isEqualTo(10);
         // when
         character.mount(weapon);
         // then
-        assertThat(character.getAbility().currentPower()).isEqualTo(attack);
+        assertThat(character.currentPower()).isEqualTo(attack);
     }
 }

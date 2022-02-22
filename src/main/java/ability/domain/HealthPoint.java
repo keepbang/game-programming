@@ -26,8 +26,8 @@ public class HealthPoint {
         healthPoint = remainHealthPoint(healthPoint + healPoint);
     }
 
-    public void downHp(int damage) {
-        healthPoint = remainHealthPoint(healthPoint - damage);
+    public void downHp(double damage) {
+        healthPoint = remainHealthPoint((int) (healthPoint - damage));
     }
 
     private int remainHealthPoint(int remain) {

@@ -17,9 +17,8 @@ public class ElusionTest {
         Character elf = makeCharacter("elf");
         // when
         boolean isUsedSkill = elf.castSkill(Skill.ELUSION);
-        CharacterAbility ability = elf.getAbility();
         // then
         assertThat(isUsedSkill).isTrue();
-        assertThat(ability.currentAvoidRate()).isEqualTo(65);
+        assertThat(elf.currentAvoidRate()).isEqualTo(65);
     }
 }

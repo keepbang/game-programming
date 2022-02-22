@@ -28,12 +28,12 @@ public class OrcWeaponTest {
     @DisplayName("오크 무기 장착 후 공격력 검증")
     public void mountWeapon(Character character, Weapon weapon, double attack, double attackSpeed) {
         // given
-        assertThat(character.getAbility().currentPower()).isEqualTo(10);
-        assertThat(character.getAbility().currentAttackSpeed()).isEqualTo(0.7);
+        assertThat(character.currentPower()).isEqualTo(10);
+        assertThat(character.currentAttackSpeed()).isEqualTo(0.7);
         // when
         character.mount(weapon);
         // then
-        assertThat(character.getAbility().currentPower()).isEqualTo(attack);
-        assertThat(character.getAbility().currentAttackSpeed()).isEqualTo(attackSpeed);
+        assertThat(character.currentPower()).isEqualTo(attack);
+        assertThat(character.currentAttackSpeed()).isEqualTo(attackSpeed);
     }
 }
