@@ -1,10 +1,14 @@
 package monster.service;
 
+import ability.domain.CharacterAbility;
 import character.domain.Character;
+import character.domain.CharacterRace;
 import monster.domain.Monster;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import skill.domain.Skill;
 
 import static ability.domain.MonsterAbilityTest.testMonsterAbility;
 import static character.domain.CharacterTest.makeCharacter;
@@ -26,5 +30,20 @@ public class MonsterServiceTest {
         boolean actual = monsterService.attack(character, monster);
         // then
         assertThat(actual).isEqualTo(result);
+    }
+
+    @Test
+    @DisplayName("휴먼 캐릭터가 무적 스킬을 사용하면 공격이 실패한다.")
+    public void monsterAttackFailByInvincibleCharacter() {
+        // given
+        MonsterService monsterService = new MonsterService(() -> 50);
+        CharacterAbility characterAbility = CharacterAbility.init(99, 100, 100, 50, 1, 10, 50);
+        Character character = CharacterRace.generateCharacter("human", characterAbility);
+        Monster monster = monsterService.createMonster(testMonsterAbility());
+        // when
+        character.castSkill(Skill.INVINCIBLE);
+        boolean actual = monsterService.attack(character, monster);
+        // then
+        assertThat(actual).isFalse();
     }
 }
