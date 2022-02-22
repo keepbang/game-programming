@@ -4,8 +4,10 @@ import ability.domain.CharacterAbility;
 import character.domain.Character;
 import character.domain.CharacterRace;
 import common.exception.CannotMountWeaponException;
+import common.exception.NotFoundSkillException;
 import common.util.RandomRateGenerator;
 import monster.domain.Monster;
+import skill.domain.Skill;
 import weapon.domain.Weapon;
 
 public class CharacterService {
@@ -38,7 +40,6 @@ public class CharacterService {
     /**
      * 캐릭터 공격
      * - 일정 확률로 캐릭터가 몬스터의 반격 대미지를 받을 수 있다.
-     * @return 공격 성공 여부
      */
     public boolean attack(Character character, Monster monster) {
         boolean isAttack = character.attack(monster);
@@ -46,5 +47,24 @@ public class CharacterService {
             character.downHp(monster.counterDamage(rateGenerator));
         }
         return isAttack;
+    }
+
+    /**
+     * 캐릭터 스킬 사용
+     */
+    public boolean cast(Character character, Skill skill) {
+        try {
+            return character.castSkill(skill);
+        } catch(NotFoundSkillException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    /**
+     *  캐릭터 레벨업
+     */
+    public CharacterAbility levelUp(Character character) {
+        return character.levelUp();
     }
 }

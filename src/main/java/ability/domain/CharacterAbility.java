@@ -96,6 +96,11 @@ public class CharacterAbility extends CommonAbility {
         return avoidRate.isAvoid(rate);
     }
 
+    public CharacterAbility levelUp() {
+        level.levelUp();
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
