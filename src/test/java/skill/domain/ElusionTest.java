@@ -1,6 +1,5 @@
 package skill.domain;
 
-import ability.domain.CharacterAbility;
 import character.domain.Character;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
